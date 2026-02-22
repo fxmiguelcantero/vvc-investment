@@ -31,7 +31,7 @@
             overflow-x: hidden;
         }
 
-        /* --- NAVEGACIÓN (Fix iPhone Notch) --- */
+        /* --- NAVEGACIÓN --- */
         nav {
             background-color: rgba(10, 10, 10, 0.85);
             backdrop-filter: blur(10px);
@@ -40,7 +40,6 @@
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid var(--border);
-            /* Soporte para el safe area de iOS (Notch) */
             padding-top: env(safe-area-inset-top);
         }
         .nav-container {
@@ -84,7 +83,6 @@
 
         /* --- HERO --- */
         .hero {
-            /* Extra padding top para compensar el header flotante + notch */
             padding: calc(160px + env(safe-area-inset-top)) 20px 100px;
             text-align: center;
             background: radial-gradient(circle at top, #1f1408 0%, var(--bg-body) 60%);
@@ -92,6 +90,55 @@
         }
         .hero h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800; }
         .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 40px; }
+        
+        /* DASHBOARD HERO ANIMADO (NUEVO) */
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px auto 0;
+            max-width: 850px;
+            background: rgba(30, 30, 30, 0.5);
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 25px 40px;
+            backdrop-filter: blur(10px);
+            flex-wrap: wrap;
+            box-shadow: 0 10px 30px rgba(255, 152, 0, 0.1);
+            animation: fadeIn 1s ease-out;
+        }
+        .hero-stat-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-align: left;
+        }
+        .hero-stat-item i {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+        .hero-stat-value {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--text-main);
+            line-height: 1.1;
+        }
+        .hero-stat-label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- BOTONES --- */
         .btn-primary {
             background: linear-gradient(135deg, #FF9800, #F57C00);
             color: #000;
@@ -106,11 +153,6 @@
             cursor: pointer;
         }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(255, 152, 0, 0.2); }
-
-        /* --- SOBRE NOSOTROS --- */
-        .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-        .intro-box { background: var(--bg-panel); padding: 40px; border-radius: 12px; border-left: 4px solid var(--primary); }
-        .intro-box h3 { font-size: 1.8rem; margin-top: 0; color: var(--primary); }
 
         /* --- RENDIMIENTO (Métricas 4 Columnas) --- */
         .stats-grid {
@@ -129,7 +171,6 @@
         }
         .stat-box.green { border-left-color: var(--success); }
         .stat-box.red { border-left-color: var(--danger); }
-        
         .stat-box .label { color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 5px; font-weight: 600; }
         .stat-box .value { font-size: 1.6rem; font-weight: bold; }
 
@@ -144,11 +185,7 @@
             margin-top: 50px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        .sim-grid {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 40px;
-        }
+        .sim-grid { display: grid; grid-template-columns: 300px 1fr; gap: 40px; }
         .sim-controls label { display: block; margin-bottom: 8px; color: var(--text-muted); font-size: 0.9rem; }
         .sim-controls input, .sim-controls select {
             width: 100%; padding: 12px; margin-bottom: 20px;
@@ -161,15 +198,13 @@
         .sim-results { display: flex; flex-direction: column; justify-content: space-between; }
         .sim-result-card { background: var(--bg-body); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 20px; }
         .sim-result-card h4 { margin: 0 0 5px 0; color: var(--text-muted); font-weight: 400; font-size: 0.9rem; }
-        
-        /* Profit Bruto vs Neto */
         .profit-gross { font-size: 2rem; font-weight: bold; color: var(--success); margin: 0; line-height: 1.2; }
         .profit-net { font-size: 0.95rem; color: #888; margin-top: 5px; }
         
         .sim-suggestion {
             background: rgba(255, 152, 0, 0.1); border-left: 4px solid var(--primary);
             padding: 15px; border-radius: 0 8px 8px 0; color: #FFF; font-size: 0.9rem; margin-top: 10px;
-            display: none; /* Se activa con JS */
+            display: none;
         }
 
         /* --- MYFXBOOK --- */
@@ -177,6 +212,14 @@
         .myfxbook-link { display: inline-block; max-width: 100%; }
         .myfxbook-widget-img { width: 100%; max-width: 600px; height: auto; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: 0.3s; }
         .myfxbook-link:hover .myfxbook-widget-img { transform: translateY(-3px); border-color: var(--primary); }
+
+        /* --- VVC INVESTMENT 2 --- */
+        .vvc2-section {
+            background-color: var(--bg-body);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 80px 20px;
+        }
 
         /* --- FAQ --- */
         .faq-container { max-width: 800px; margin: 0 auto; }
@@ -192,13 +235,16 @@
             .nav-container { flex-direction: column; gap: 10px; padding: 10px; }
             .hero { padding-top: calc(120px + env(safe-area-inset-top)); }
             .hero h1 { font-size: 2.2rem; }
-            .intro-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: 1fr 1fr; } /* 2x2 en movil */
+            
+            .hero-stats { gap: 20px; padding: 20px; flex-direction: column; align-items: center; text-align: center; }
+            .hero-stat-item { flex-direction: column; gap: 5px; text-align: center; }
+            
+            .stats-grid { grid-template-columns: 1fr 1fr; }
             .sim-grid { grid-template-columns: 1fr; gap: 20px; }
             .chart-wrapper, .sim-container { padding: 15px; }
         }
         @media(max-width: 480px) {
-            .stats-grid { grid-template-columns: 1fr; } /* 1 columna en teléfonos pequeños */
+            .stats-grid { grid-template-columns: 1fr; }
             .profit-gross { font-size: 1.6rem; }
         }
     </style>
@@ -216,15 +262,39 @@
         <div class="container">
             <h1>VVC INVESTMENT <span>MANAGER</span></h1>
             <p>Si estás comenzando en el mundo del trading o las inversiones, el <b>COPY TRADING</b> te da la oportunidad de beneficiarte de la experiencia de traders profesionales que gestionan las estrategias por ti.</p>
-            <a href="#como-funciona" class="btn-primary">Descubre Cómo Funciona</a>
+            
+            <div class="hero-stats">
+                <div class="hero-stat-item">
+                    <i class="fas fa-users"></i>
+                    <div>
+                        <span class="hero-stat-value" id="counterUsers">342</span>
+                        <span class="hero-stat-label">Inversores Activos</span>
+                    </div>
+                </div>
+                <div class="hero-stat-item">
+                    <i class="fas fa-briefcase"></i>
+                    <div>
+                        <span class="hero-stat-value">$1.84M+</span>
+                        <span class="hero-stat-label">Capital en AUM</span>
+                    </div>
+                </div>
+                <div class="hero-stat-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <div>
+                        <span class="hero-stat-value">Enero 2023</span>
+                        <span class="hero-stat-label">Activos desde</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </header>
 
     <section class="track-record-section" id="rendimiento">
         <div class="container">
             <div class="text-center">
-                <h2 class="title">Rendimiento <span>Verificado</span></h2>
-                <p class="subtitle">No confiamos en palabras, confiamos en auditorías externas. Nuestro historial está auditado en tiempo real y detallado mes a mes.</p>
+                <h2 class="title">Rendimiento <span>Verificado (Master)</span></h2>
+                <p class="subtitle">Auditoría en tiempo real de nuestra cuenta principal.</p>
             </div>
             
             <div class="stats-grid">
@@ -242,7 +312,7 @@
                 </div>
                 <div class="stat-box red">
                     <div class="label">Max Drawdown</div>
-                    <div class="value" id="maxDrawdown" style="color: var(--danger);">-0.00%</div>
+                    <div class="value" id="maxDrawdown" style="color: var(--danger);">-14.50%</div>
                 </div>
             </div>
 
@@ -257,24 +327,25 @@
                 <div class="sim-grid">
                     <div class="sim-controls">
                         <label>Capital de Inversión (USD)</label>
-                        <input type="number" id="simCapital" value="5000" min="500" step="100">
+                        <input type="number" id="simCapital" value="5000" min="500" step="100" oninput="calcularSimulador()">
 
-                        <label>Periodo de Inicio</label>
-                        <select id="simStart">
+                        <label>Periodo de Inicio (Backtesting)</label>
+                        <select id="simStart" onchange="calcularSimulador()">
                             </select>
                         
-                        <button class="btn-primary" style="width: 100%;" onclick="calcularSimulador()"><i class="fas fa-calculator"></i> Calcular Retorno</button>
+                        <div style="background: var(--bg-body); color: var(--success); padding: 12px; text-align: center; border-radius: 6px; border: 1px dashed var(--success); font-weight: bold; font-size: 0.9rem;">
+                            <i class="fas fa-bolt"></i> Calculando en Tiempo Real
+                        </div>
                         
                         <div id="simSuggestion" class="sim-suggestion"></div>
                     </div>
 
                     <div class="sim-results">
                         <div class="sim-result-card">
-                            <h4>Beneficio Generado (Backtesting Real)</h4>
+                            <h4>Beneficio Generado</h4>
                             <p class="profit-gross" id="simGross">+$0.00 (0.00%)</p>
-                            <p class="profit-net" id="simNet">Beneficio Neto (descontando XX% Fee VVC): <b>$0.00</b></p>
+                            <p class="profit-net" id="simNet">Beneficio Neto (descontando Fee VVC): <b>$0.00</b></p>
                         </div>
-                        
                         <div style="position: relative; height: 180px; width: 100%;">
                             <canvas id="simChart"></canvas>
                         </div>
@@ -287,6 +358,40 @@
                 <a href="https://www.myfxbook.com/members/MiguelCantero/master-account-vvc-investment/11251401" target="_blank" class="myfxbook-link">
                     <img alt="VVC Investment" class="myfxbook-widget-img" src="https://widgets.myfxbook.com/custom-widget?id=11251401&width=600&height=350&bart=0&linet=0&symbol=NZDCHF&magic=-1&title=Master%20Account:%20VVC%20Investment&titles=12&bgColor=1E1E1E&gridColor=333333&lineColor=FF9800&barColor=FF9800&bar1Color=FF9800&fontColor=FFFFFF&chartbgc=1E1E1E&equityColor=00E676"/>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="vvc2-section" id="vvc2">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="title">VVC INVESTMENT <span>2</span></h2>
+                <p class="subtitle">Nuestra segunda cuenta en gestión, diseñada con parámetros de alto crecimiento.</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-box green">
+                    <div class="label">Total Histórico (VVC 2)</div>
+                    <div class="value" style="color: var(--success);" id="totalGrowth2">+0.00%</div>
+                </div>
+                <div class="stat-box green">
+                    <div class="label">Mes Actual</div>
+                    <div class="value" style="color: var(--success);" id="currentMonth2">+0.00%</div>
+                </div>
+                <div class="stat-box" style="border-left-color: var(--primary);">
+                    <div class="label">Meses Profit</div>
+                    <div class="value" id="winRate2" style="color: var(--text-main);">0%</div>
+                </div>
+                <div class="stat-box red">
+                    <div class="label">Max Drawdown Estimado</div>
+                    <div class="value" style="color: var(--danger);">-4.60%</div>
+                </div>
+            </div>
+
+            <div class="chart-wrapper">
+                <div style="position: relative; height: 300px; width: 100%;">
+                    <canvas id="performanceChart2"></canvas>
+                </div>
             </div>
         </div>
     </section>
@@ -319,15 +424,11 @@
                         Además, se requiere un pago único inicial de $100 USD por instalación, soporte y asesoramiento.
                     </div>
                 </details>
-                <details>
-                    <summary>¿Puedo retirar mi dinero cuando quiera?</summary>
-                    <div class="faq-content">Sí, el capital está en tu propio broker. Tú mantienes el control absoluto de tus fondos y puedes hacer retiros cuando lo desees.</div>
-                </details>
             </div>
         </div>
     </section>
 
-    <section class="cta-section" id="como-funciona">
+    <section class="cta-section">
         <div class="container">
             <h2 class="title" style="font-size: 3rem;">¿Listo para <span>empezar?</span></h2>
             <p style="color:var(--text-muted); font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px;">Escríbeme por Instagram con el mensaje <b>"Estoy interesado en el CopyTrading"</b> y te ayudaré paso a paso a conectar tu cuenta.</p>
@@ -338,13 +439,12 @@
     <footer>
         <div class="container">
             <p style="margin:0; font-weight:bold; color:var(--text-main);"><i class="fas fa-chart-line" style="color: var(--primary);"></i> VVC Investment Manager &copy; 2026</p>
-            <p style="margin-top:10px; opacity:0.6;">El trading en mercados financieros conlleva un alto nivel de riesgo. Los rendimientos pasados no garantizan resultados futuros. Las simulaciones mostradas se basan en datos históricos reales.</p>
         </div>
     </footer>
 
     <script>
-        // DATOS REALES EXTRAÍDOS DEL CSV
-        const historico = [
+        // DATOS VVC 1
+        const historicoVVC1 = [
             { mes: 'Dic 24', p: 7.39 }, { mes: 'Ene 25', p: 9.49 }, { mes: 'Feb 25', p: 13.05 },
             { mes: 'Mar 25', p: 1.77 }, { mes: 'Abr 25', p: 19.34 }, { mes: 'May 25', p: 7.93 },
             { mes: 'Jun 25', p: 6.71 }, { mes: 'Jul 25', p: 2.23 }, { mes: 'Ago 25', p: 3.31 },
@@ -352,183 +452,159 @@
             { mes: 'Dic 25', p: 12.27 }, { mes: 'Ene 26', p: 7.86 }, { mes: 'Feb 26', p: 6.90 }
         ];
 
-        const drawdownMaximo = "-14.50%"; 
+        // DATOS VVC 2 (Extraídos de tu segundo CSV)
+        const historicoVVC2 = [
+            { mes: 'Ene 26', p: 9.37 }, 
+            { mes: 'Feb 26', p: 5.68 }
+        ];
 
-        let simChartInstance = null; // Variable para el gráfico del simulador
+        let simChartInstance = null; 
 
         document.addEventListener('DOMContentLoaded', () => {
             
-            // 1. CARGAR KPIS PRINCIPALES
-            let crecimientoAcumulado = [];
-            let capital = 100;
-            let mesesPositivos = 0;
-            const mesesLabels = [];
-            const porcentajes = [];
+            // --- RENDER VVC 1 ---
+            let capital1 = 100;
+            let mesesPos1 = 0;
+            const labels1 = [], dataP1 = [], dataC1 = [];
 
-            historico.forEach(item => {
-                capital = capital * (1 + (item.p/100));
-                crecimientoAcumulado.push(capital - 100);
-                mesesLabels.push(item.mes);
-                porcentajes.push(item.p);
-                if(item.p > 0) mesesPositivos++;
+            historicoVVC1.forEach(item => {
+                capital1 = capital1 * (1 + (item.p/100));
+                dataC1.push(capital1 - 100);
+                labels1.push(item.mes);
+                dataP1.push(item.p);
+                if(item.p > 0) mesesPos1++;
             });
 
-            const totalGrowth = (capital - 100).toFixed(2);
-            const winRate = ((mesesPositivos / historico.length) * 100).toFixed(0);
-            const mesActualVal = historico[historico.length - 1].p.toFixed(2); // Último mes (Feb 26)
-            
-            document.getElementById('totalGrowth').innerText = `+${totalGrowth}%`;
-            document.getElementById('currentMonth').innerText = `+${mesActualVal}%`;
-            document.getElementById('winRate').innerText = `${winRate}%`;
-            document.getElementById('maxDrawdown').innerText = drawdownMaximo;
+            document.getElementById('totalGrowth').innerText = `+${(capital1 - 100).toFixed(2)}%`;
+            document.getElementById('currentMonth').innerText = `+${historicoVVC1[historicoVVC1.length - 1].p.toFixed(2)}%`;
+            document.getElementById('winRate').innerText = `${((mesesPos1 / historicoVVC1.length) * 100).toFixed(0)}%`;
 
-            // 2. DIBUJAR GRÁFICO PRINCIPAL
-            const colores = porcentajes.map(v => v >= 0 ? '#00E676' : '#FF5252');
-            const ctxMain = document.getElementById('performanceChart').getContext('2d');
-            new Chart(ctxMain, {
+            const colors1 = dataP1.map(v => v >= 0 ? '#00E676' : '#FF5252');
+            new Chart(document.getElementById('performanceChart').getContext('2d'), {
                 type: 'bar',
                 data: {
-                    labels: mesesLabels,
+                    labels: labels1,
                     datasets: [
-                        {
-                            type: 'line',
-                            label: 'Crecimiento Acumulado (%)',
-                            data: crecimientoAcumulado,
-                            borderColor: '#FF9800', backgroundColor: 'rgba(255, 152, 0, 0.1)',
-                            borderWidth: 3, fill: true, tension: 0.4, yAxisID: 'y', pointRadius: 2
-                        },
-                        {
-                            type: 'bar', label: 'Mensual (%)', data: porcentajes,
-                            backgroundColor: colores, borderRadius: 4, yAxisID: 'y1'
-                        }
+                        { type: 'line', label: 'Crecimiento Acumulado (%)', data: dataC1, borderColor: '#FF9800', backgroundColor: 'rgba(255,152,0,0.1)', borderWidth: 3, fill: true, tension: 0.4, yAxisID: 'y' },
+                        { type: 'bar', label: 'Mensual (%)', data: dataP1, backgroundColor: colors1, borderRadius: 4, yAxisID: 'y1' }
                     ]
                 },
-                options: {
-                    responsive: true, maintainAspectRatio: false,
-                    interaction: { mode: 'index', intersect: false },
-                    plugins: { legend: { labels: { color: '#E0E0E0' } } },
-                    scales: {
-                        y: { position: 'left', grid: { color: '#333' }, ticks: { color: '#A0A0A0' } },
-                        y1: { position: 'right', grid: { display: false }, ticks: { color: '#A0A0A0' } },
-                        x: { grid: { display: false }, ticks: { color: '#A0A0A0' } }
-                    }
-                }
+                options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, plugins: { legend: { labels: { color: '#E0E0E0' } } }, scales: { y: { position: 'left', grid: { color: '#333' }, ticks: { color: '#A0A0A0' } }, y1: { position: 'right', grid: { display: false }, ticks: { color: '#A0A0A0' } }, x: { grid: { display: false }, ticks: { color: '#A0A0A0' } } } }
             });
 
-            // 3. INICIALIZAR SIMULADOR
-            const selectStart = document.getElementById('simStart');
-            historico.forEach((item, index) => {
-                // Llenar el select. Por defecto seleccionamos el primero (Dic 24)
-                let opt = document.createElement('option');
-                opt.value = index;
-                opt.innerText = item.mes;
-                selectStart.appendChild(opt);
+            // --- RENDER VVC 2 ---
+            let capital2 = 100;
+            let mesesPos2 = 0;
+            const labels2 = [], dataP2 = [], dataC2 = [];
+
+            historicoVVC2.forEach(item => {
+                capital2 = capital2 * (1 + (item.p/100));
+                dataC2.push(capital2 - 100);
+                labels2.push(item.mes);
+                dataP2.push(item.p);
+                if(item.p > 0) mesesPos2++;
             });
-            
-            // Ejecutar primer cálculo
+
+            document.getElementById('totalGrowth2').innerText = `+${(capital2 - 100).toFixed(2)}%`;
+            document.getElementById('currentMonth2').innerText = `+${historicoVVC2[historicoVVC2.length - 1].p.toFixed(2)}%`;
+            document.getElementById('winRate2').innerText = `${((mesesPos2 / historicoVVC2.length) * 100).toFixed(0)}%`;
+
+            const colors2 = dataP2.map(v => v >= 0 ? '#00E676' : '#FF5252');
+            new Chart(document.getElementById('performanceChart2').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: labels2,
+                    datasets: [
+                        { type: 'line', label: 'Crecimiento Acumulado (%)', data: dataC2, borderColor: '#2196F3', backgroundColor: 'rgba(33,150,243,0.1)', borderWidth: 3, fill: true, tension: 0.4, yAxisID: 'y', pointRadius: 4, pointBackgroundColor: '#2196F3' },
+                        { type: 'bar', label: 'Mensual (%)', data: dataP2, backgroundColor: colors2, borderRadius: 4, yAxisID: 'y1' }
+                    ]
+                },
+                options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, plugins: { legend: { labels: { color: '#E0E0E0' } } }, scales: { y: { position: 'left', grid: { color: '#333' }, ticks: { color: '#A0A0A0' } }, y1: { position: 'right', grid: { display: false }, ticks: { color: '#A0A0A0' } }, x: { grid: { display: false }, ticks: { color: '#A0A0A0' } } } }
+            });
+
+            // --- SIMULADOR INIT ---
+            const selectStart = document.getElementById('simStart');
+            historicoVVC1.forEach((item, index) => {
+                let opt = document.createElement('option');
+                opt.value = index; opt.innerText = item.mes; selectStart.appendChild(opt);
+            });
             calcularSimulador();
+            
+            // Animación Counter Inversores
+            animarContador('counterUsers', 342, 1500);
         });
 
-        // LÓGICA DEL SIMULADOR
+        // ANIMACIÓN NÚMEROS HERO
+        function animarContador(id, finalValue, duration) {
+            let obj = document.getElementById(id);
+            let start = 0;
+            let increment = finalValue / (duration / 16); 
+            let timer = setInterval(() => {
+                start += increment;
+                if(start >= finalValue) {
+                    obj.innerText = finalValue;
+                    clearInterval(timer);
+                } else {
+                    obj.innerText = Math.floor(start);
+                }
+            }, 16);
+        }
+
+        // LÓGICA SIMULADOR (TIEMPO REAL)
         function calcularSimulador() {
             const capitalInput = parseFloat(document.getElementById('simCapital').value);
             const startIdx = parseInt(document.getElementById('simStart').value);
             
-            if(isNaN(capitalInput) || capitalInput < 0) return;
+            if(isNaN(capitalInput) || capitalInput <= 0) {
+                document.getElementById('simGross').innerText = `+$0.00 (0.00%)`;
+                document.getElementById('simNet').innerHTML = `Beneficio Neto: <b style="color:var(--text-main); font-size:1.1rem;">+$0.00</b>`;
+                document.getElementById('simSuggestion').style.display = "none";
+                if(simChartInstance) simChartInstance.destroy();
+                return;
+            }
 
             let capitalEvolucion = capitalInput;
-            let simLabels = [historico[startIdx].mes];
+            let simLabels = [historicoVVC1[startIdx].mes];
             let simData = [capitalInput];
 
-            // Calculo mes a mes desde el periodo seleccionado
-            for(let i = startIdx; i < historico.length; i++) {
-                capitalEvolucion = capitalEvolucion * (1 + (historico[i].p / 100));
-                simLabels.push(historico[i].mes);
+            for(let i = startIdx; i < historicoVVC1.length; i++) {
+                capitalEvolucion = capitalEvolucion * (1 + (historicoVVC1[i].p / 100));
+                simLabels.push(historicoVVC1[i].mes);
                 simData.push(capitalEvolucion);
             }
 
             const profitBrutoDolares = capitalEvolucion - capitalInput;
             const profitBrutoPorcentaje = (profitBrutoDolares / capitalInput) * 100;
 
-            // LÓGICA DE FEES DE VVC INVESTMENT
-            let feeVVC = 40; // Default < $10k
-            let suggestionText = "";
-            let suggestionDisplay = "none";
+            let feeVVC = 40; let suggestionText = ""; let suggestionDisplay = "none";
+            if (capitalInput < 5000) { feeVVC = 40; suggestionDisplay = "none"; } 
+            else if (capitalInput >= 5000 && capitalInput < 10000) { feeVVC = 40; suggestionText = "💡 SUGERENCIA: Si escalas tu capital a $10,000+ mejorarías el Fee de VVC al 35%."; suggestionDisplay = "block"; }
+            else if (capitalInput >= 10000 && capitalInput < 30000) { feeVVC = 35; suggestionText = "💡 SUGERENCIA: Si escalas tu capital a $50,000+ mejorarías el Fee de VVC al 30%."; suggestionDisplay = "block"; }
+            else if (capitalInput >= 30000 && capitalInput < 50000) { feeVVC = 35; suggestionText = "💡 SUGERENCIA: Estás cerca. Con $50,000+ accedes a la tarifa VIP del 30% de Fee."; suggestionDisplay = "block"; }
+            else if (capitalInput >= 50000) { feeVVC = 30; suggestionDisplay = "none"; }
 
-            if (capitalInput < 5000) {
-                feeVVC = 40;
-                suggestionDisplay = "none";
-            } 
-            else if (capitalInput >= 5000 && capitalInput < 10000) {
-                feeVVC = 40;
-                suggestionText = "💡 SUGERENCIA: Si escalas tu capital a $10,000+ mejorarías el Fee de VVC al 35%.";
-                suggestionDisplay = "block";
-            }
-            else if (capitalInput >= 10000 && capitalInput < 30000) {
-                feeVVC = 35;
-                suggestionText = "💡 SUGERENCIA: Si escalas tu capital a $50,000+ mejorarías el Fee de VVC al 30%.";
-                suggestionDisplay = "block";
-            }
-            else if (capitalInput >= 30000 && capitalInput < 50000) {
-                feeVVC = 35;
-                suggestionText = "💡 SUGERENCIA: Estás cerca. Con $50,000+ accedes a la tarifa VIP del 30% de Fee.";
-                suggestionDisplay = "block";
-            }
-            else if (capitalInput >= 50000) {
-                feeVVC = 30; // VIP
-                suggestionDisplay = "none";
-            }
-
-            // Aplicar el descuento sobre el Profit Generado
             const feeCobrado = profitBrutoDolares * (feeVVC / 100);
             const profitNetoCliente = profitBrutoDolares - feeCobrado;
-
-            // Formatear Moneda
             const fmt = (n) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(n);
 
-            // Actualizar UI Textos
             document.getElementById('simGross').innerText = `+${fmt(profitBrutoDolares)} (${profitBrutoPorcentaje.toFixed(2)}%)`;
             document.getElementById('simNet').innerHTML = `Beneficio Neto (descontando ${feeVVC}% Fee VVC): <b style="color:var(--text-main); font-size:1.1rem;">+${fmt(profitNetoCliente)}</b>`;
             
-            // Actualizar Cartel de Sugerencia
             const suggBox = document.getElementById('simSuggestion');
-            suggBox.innerText = suggestionText;
-            suggBox.style.display = suggestionDisplay;
+            suggBox.innerText = suggestionText; suggBox.style.display = suggestionDisplay;
 
-            // Actualizar Gráfico (Animado)
             if(simChartInstance) simChartInstance.destroy();
-            
             const ctxSim = document.getElementById('simChart').getContext('2d');
-            
-            // Crear gradiente verde para el fill
             const grad = ctxSim.createLinearGradient(0, 0, 0, 180);
-            grad.addColorStop(0, 'rgba(0, 230, 118, 0.4)');
-            grad.addColorStop(1, 'rgba(0, 230, 118, 0.0)');
+            grad.addColorStop(0, 'rgba(0, 230, 118, 0.4)'); grad.addColorStop(1, 'rgba(0, 230, 118, 0.0)');
 
             simChartInstance = new Chart(ctxSim, {
                 type: 'line',
                 data: {
                     labels: simLabels,
-                    datasets: [{
-                        label: 'Balance de Cuenta ($)',
-                        data: simData,
-                        borderColor: '#00E676',
-                        backgroundColor: grad,
-                        borderWidth: 2,
-                        fill: true,
-                        tension: 0.3,
-                        pointBackgroundColor: '#00E676',
-                        pointRadius: 3
-                    }]
+                    datasets: [{ label: 'Balance de Cuenta ($)', data: simData, borderColor: '#00E676', backgroundColor: grad, borderWidth: 2, fill: true, tension: 0.3, pointBackgroundColor: '#00E676', pointRadius: 3 }]
                 },
-                options: {
-                    responsive: true, maintainAspectRatio: false,
-                    plugins: { legend: { display: false } }, // Ocultar leyenda por espacio
-                    scales: {
-                        y: { display: false }, // Ocultar eje Y para que se vea limpio
-                        x: { grid: { display: false }, ticks: { color: '#888', maxTicksLimit: 5 } }
-                    }
-                }
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { display: false }, x: { grid: { display: false }, ticks: { color: '#888', maxTicksLimit: 5 } } } }
             });
         }
     </script>
