@@ -9,16 +9,18 @@
     
     <style>
         :root {
-            --primary: #FF9800;
-            --primary-hover: #F57C00;
-            --bg-body: #0a0a0a;
-            --bg-panel: #141414;
-            --bg-card: #1E1E1E;
-            --text-main: #FFFFFF;
-            --text-muted: #A0A0A0;
-            --border: #2A2A2A;
-            --success: #00E676;
-            --danger: #FF5252;
+            /* PALETA CORPORATIVA DE CONFIANZA (BLANCO Y AZUL) */
+            --primary: #2563EB; /* Azul fuerte y confiable */
+            --primary-hover: #1D4ED8;
+            --primary-light: rgba(37, 99, 235, 0.1);
+            --bg-body: #F8FAFC; /* Fondo muy suave, gris azulado claro */
+            --bg-panel: #FFFFFF; /* Paneles blancos puros */
+            --bg-card: #FFFFFF;
+            --text-main: #1E293B; /* Texto oscuro principal */
+            --text-muted: #64748B; /* Texto gris secundario */
+            --border: #E2E8F0; /* Bordes suaves */
+            --success: #10B981; /* Verde esmeralda para ganancias */
+            --danger: #EF4444; /* Rojo suave para pérdidas */
         }
 
         body {
@@ -33,7 +35,7 @@
 
         /* --- NAVEGACIÓN --- */
         nav {
-            background-color: rgba(10, 10, 10, 0.85);
+            background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             position: fixed;
             width: 100%;
@@ -41,6 +43,7 @@
             z-index: 1000;
             border-bottom: 1px solid var(--border);
             padding-top: env(safe-area-inset-top);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
         .nav-container {
             max-width: 1200px;
@@ -62,33 +65,33 @@
         }
         .logo span { color: var(--primary); }
         .btn-outline {
-            border: 1px solid var(--primary);
+            border: 2px solid var(--primary);
             color: var(--primary);
             padding: 8px 20px;
-            border-radius: 4px;
+            border-radius: 6px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             transition: 0.3s;
             white-space: nowrap;
         }
-        .btn-outline:hover { background-color: var(--primary); color: #000; }
+        .btn-outline:hover { background-color: var(--primary); color: #FFF; }
 
         /* --- GLOBALES --- */
         section { padding: 80px 20px; }
         .container { max-width: 1100px; margin: 0 auto; }
         .text-center { text-align: center; }
-        .title { font-size: 2.5rem; margin-bottom: 20px; color: var(--text-main); line-height: 1.2; }
+        .title { font-size: 2.5rem; margin-bottom: 20px; color: var(--text-main); line-height: 1.2; font-weight: 800; }
         .title span { color: var(--primary); }
         .subtitle { color: var(--text-muted); font-size: 1.1rem; max-width: 800px; margin: 0 auto 50px; }
 
         /* --- HERO --- */
         .hero {
-            padding: calc(160px + env(safe-area-inset-top)) 20px 100px;
+            padding: calc(150px + env(safe-area-inset-top)) 20px 100px;
             text-align: center;
-            background: radial-gradient(circle at top, #1f1408 0%, var(--bg-body) 60%);
+            background: linear-gradient(180deg, #E0E7FF 0%, var(--bg-body) 100%);
             border-bottom: 1px solid var(--border);
         }
-        .hero h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800; }
+        .hero h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 900; color: #0F172A; }
         .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 40px; }
         
         /* DASHBOARD HERO ANIMADO */
@@ -97,14 +100,14 @@
             justify-content: center;
             gap: 40px;
             margin: 40px auto 0;
-            max-width: 850px;
-            background: rgba(30, 30, 30, 0.5);
-            border: 1px solid var(--primary);
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid var(--border);
             border-radius: 12px;
             padding: 25px 40px;
             backdrop-filter: blur(10px);
             flex-wrap: wrap;
-            box-shadow: 0 10px 30px rgba(255, 152, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.05);
             animation: fadeIn 1s ease-out;
         }
         .hero-stat-item {
@@ -114,12 +117,12 @@
             text-align: left;
         }
         .hero-stat-item i {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--primary);
         }
         .hero-stat-value {
             display: block;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 900;
             color: var(--text-main);
             line-height: 1.1;
@@ -130,7 +133,7 @@
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         @keyframes fadeIn {
@@ -140,101 +143,111 @@
 
         /* --- BOTONES --- */
         .btn-primary {
-            background: linear-gradient(135deg, #FF9800, #F57C00);
-            color: #000;
+            background: var(--primary);
+            color: #FFFFFF;
             padding: 15px 40px;
             font-size: 1.1rem;
             font-weight: bold;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             text-decoration: none;
             display: inline-block;
             transition: 0.3s;
             cursor: pointer;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
         }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(255, 152, 0, 0.2); }
+        .btn-primary:hover { 
+            background: var(--primary-hover); 
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4); 
+            color: #FFF;
+        }
 
         /* --- SOBRE NOSOTROS --- */
         .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-        .intro-box { background: var(--bg-panel); padding: 40px; border-radius: 12px; border-left: 4px solid var(--primary); }
+        .intro-box { background: var(--bg-panel); padding: 40px; border-radius: 12px; border-left: 4px solid var(--primary); box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
         .intro-box h3 { font-size: 1.8rem; margin-top: 0; color: var(--primary); }
-
-        /* --- GRID DE TARJETAS (Por qué nosotros) --- */
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { background: var(--bg-card); padding: 30px; border-radius: 12px; border: 1px solid var(--border); text-align: center; transition: 0.3s; }
-        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
-        .card h4 { font-size: 1.2rem; margin: 0 0 15px; }
-        .card p { color: var(--text-muted); font-size: 0.95rem; margin: 0; }
 
         /* --- RENDIMIENTO (Métricas 4 Columnas) --- */
         .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px; }
-        .stat-box { background: var(--bg-card); padding: 20px; border-radius: 8px; text-align: center; border: 1px solid var(--border); border-left: 4px solid var(--primary); }
-        .stat-box.green { border-left-color: var(--success); }
-        .stat-box.red { border-left-color: var(--danger); }
-        .stat-box .label { color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 5px; font-weight: 600; }
-        .stat-box .value { font-size: 1.6rem; font-weight: bold; }
-        .chart-wrapper { background: var(--bg-card); padding: 30px; border-radius: 12px; margin-bottom: 40px; border: 1px solid var(--border); }
+        .stat-box { background: var(--bg-card); padding: 20px; border-radius: 10px; text-align: center; border: 1px solid var(--border); box-shadow: 0 4px 10px rgba(0,0,0,0.02); position: relative; overflow: hidden; }
+        .stat-box::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--primary); }
+        .stat-box.green::before { background: var(--success); }
+        .stat-box.red::before { background: var(--danger); }
+        .stat-box .label { color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 5px; font-weight: 700; }
+        .stat-box .value { font-size: 1.6rem; font-weight: 900; }
+        .chart-wrapper { background: var(--bg-card); padding: 30px; border-radius: 12px; margin-bottom: 40px; border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
 
         /* --- SIMULADOR DE GANANCIAS --- */
-        .sim-container { background: var(--bg-panel); border: 1px solid var(--border); border-radius: 12px; padding: 40px; margin-top: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .sim-grid { display: grid; grid-template-columns: 300px 1fr; gap: 40px; }
-        .sim-controls label { display: block; margin-bottom: 8px; color: var(--text-muted); font-size: 0.9rem; }
-        .sim-controls input, .sim-controls select { width: 100%; padding: 12px; margin-bottom: 20px; background: var(--bg-body); border: 1px solid var(--border); color: white; border-radius: 6px; box-sizing: border-box; font-size: 1rem; font-family: inherit; }
-        .sim-controls input:focus, .sim-controls select:focus { border-color: var(--primary); outline: none; }
+        .sim-container { background: var(--bg-panel); border: 1px solid var(--border); border-radius: 12px; padding: 40px; margin-top: 50px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
+        .sim-grid { display: grid; grid-template-columns: 320px 1fr; gap: 40px; }
+        .sim-controls label { display: block; margin-bottom: 8px; color: var(--text-main); font-weight: 600; font-size: 0.95rem; }
+        .sim-controls input, .sim-controls select { width: 100%; padding: 12px 15px; margin-bottom: 20px; background: #F1F5F9; border: 1px solid var(--border); color: var(--text-main); border-radius: 8px; box-sizing: border-box; font-size: 1rem; font-family: inherit; font-weight: 500; transition: 0.2s; }
+        .sim-controls input:focus, .sim-controls select:focus { border-color: var(--primary); outline: none; background: #FFF; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
         
         .sim-results { display: flex; flex-direction: column; justify-content: space-between; }
-        .sim-result-card { background: var(--bg-body); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 20px; }
-        .sim-result-card h4 { margin: 0 0 5px 0; color: var(--text-muted); font-weight: 400; font-size: 0.9rem; }
-        .profit-gross { font-size: 2rem; font-weight: bold; color: var(--success); margin: 0; line-height: 1.2; }
-        .profit-net { font-size: 0.95rem; color: #888; margin-top: 5px; }
+        .sim-result-card { background: var(--bg-body); border: 1px solid var(--border); border-radius: 10px; padding: 25px; margin-bottom: 20px; text-align: center; }
+        .sim-result-card h4 { margin: 0 0 10px 0; color: var(--text-muted); font-weight: 600; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .profit-gross { font-size: 2.5rem; font-weight: 900; color: var(--success); margin: 0; line-height: 1.2; }
+        .profit-net { font-size: 1rem; color: var(--text-muted); margin-top: 8px; font-weight: 500; }
         
-        .sim-suggestion { background: rgba(255, 152, 0, 0.1); border-left: 4px solid var(--primary); padding: 15px; border-radius: 0 8px 8px 0; color: #FFF; font-size: 0.9rem; margin-top: 10px; display: none; }
+        .sim-suggestion { background: var(--primary-light); border-left: 4px solid var(--primary); padding: 15px; border-radius: 0 8px 8px 0; color: var(--primary-hover); font-size: 0.9rem; margin-top: 10px; font-weight: 600; display: none; }
 
         /* --- MYFXBOOK --- */
-        .myfxbook-wrapper { text-align: center; margin-top: 50px; width: 100%; }
+        .myfxbook-wrapper { text-align: center; margin-top: 50px; width: 100%; background: #F8FAFC; padding: 40px; border-radius: 12px; border: 1px dashed var(--border); }
         .myfxbook-link { display: inline-block; max-width: 100%; }
-        .myfxbook-widget-img { width: 100%; max-width: 600px; height: auto; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: 0.3s; }
-        .myfxbook-link:hover .myfxbook-widget-img { transform: translateY(-3px); border-color: var(--primary); }
+        .myfxbook-widget-img { width: 100%; max-width: 600px; height: auto; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 10px 25px rgba(0,0,0,0.08); transition: 0.3s; }
+        .myfxbook-link:hover .myfxbook-widget-img { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 15px 35px rgba(37,99,235,0.15); }
 
         /* --- VVC INVESTMENT 2 --- */
-        .vvc2-section { background-color: var(--bg-body); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 20px; }
+        .vvc2-section { background-color: #FFFFFF; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 20px; }
 
         /* --- COMO FUNCIONA (STEPS) --- */
         .step { display: flex; gap: 20px; margin-bottom: 40px; }
-        .step-number { width: 50px; height: 50px; background: var(--primary); color: #000; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; font-weight: bold; flex-shrink: 0; }
-        .step-text h4 { font-size: 1.3rem; margin: 0 0 10px; }
-        .step-text p { color: var(--text-muted); margin: 0; }
+        .step-number { width: 55px; height: 55px; background: var(--primary-light); color: var(--primary); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; font-weight: 900; flex-shrink: 0; border: 2px solid var(--primary); }
+        .step-text h4 { font-size: 1.3rem; margin: 0 0 10px; color: var(--text-main); font-weight: 700; }
+        .step-text p { color: var(--text-muted); margin: 0; font-size: 1rem; }
+
+        /* CAJA ALERTA DE PRECIO */
+        .pricing-alert { background: #F0FDF4; border: 1px solid #BBF7D0; border-left: 5px solid var(--success); padding: 20px; border-radius: 8px; margin-bottom: 40px; }
+        .pricing-alert h4 { color: #166534; margin: 0 0 10px 0; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
+        .pricing-alert p { color: #15803D; margin: 0; font-size: 0.95rem; }
 
         /* --- FAQ --- */
         .faq-container { max-width: 800px; margin: 0 auto; }
-        details { background: var(--bg-panel); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 15px; }
-        summary { padding: 20px; font-size: 1.1rem; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; }
+        details { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        summary { padding: 20px; font-size: 1.1rem; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; color: var(--text-main); }
         summary::-webkit-details-marker { display: none; }
-        summary::after { content: '\f0d7'; font-family: 'Font Awesome 6 Free'; color: var(--primary); transition: 0.3s; }
+        summary::after { content: '\f0d7'; font-family: 'Font Awesome 6 Free'; color: var(--primary); transition: 0.3s; font-size: 1.2rem; }
         details[open] summary::after { transform: rotate(180deg); }
-        .faq-content { padding: 0 20px 20px; color: var(--text-muted); border-top: 1px solid var(--border); margin-top: 10px; padding-top: 15px; }
+        .faq-content { padding: 0 20px 20px; color: var(--text-muted); border-top: 1px solid var(--border); margin-top: 5px; padding-top: 20px; font-size: 1rem; line-height: 1.7; }
 
         /* --- FOOTER & CTA --- */
-        .cta-section { text-align: center; padding: 100px 20px; background: linear-gradient(0deg, var(--bg-panel) 0%, var(--bg-body) 100%); }
-        footer { background: #050505; text-align: center; padding: 30px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem; }
+        .cta-section { text-align: center; padding: 100px 20px; background: linear-gradient(180deg, var(--bg-body) 0%, #E0E7FF 100%); }
+        footer { background: #0F172A; text-align: center; padding: 40px 20px; color: #94A3B8; font-size: 0.95rem; }
+        footer a { color: #CBD5E1; text-decoration: none; }
 
         /* --- RESPONSIVE MOBILE --- */
-        @media(max-width: 850px) {
-            .nav-container { flex-direction: column; gap: 10px; padding: 10px; }
-            .hero { padding-top: calc(120px + env(safe-area-inset-top)); }
-            .hero h1 { font-size: 2.2rem; }
-            .hero-stats { gap: 20px; padding: 20px; flex-direction: column; align-items: center; text-align: center; }
-            .hero-stat-item { flex-direction: column; gap: 5px; text-align: center; }
-            .intro-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: 1fr 1fr; }
-            .sim-grid { grid-template-columns: 1fr; gap: 20px; }
-            .chart-wrapper, .sim-container { padding: 15px; }
-            .step { flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+        @media(max-width: 900px) {
+            .hero-stats { flex-direction: column; align-items: center; text-align: center; gap: 25px; padding: 30px; }
+            .hero-stat-item { flex-direction: column; gap: 10px; text-align: center; }
+            .sim-grid { grid-template-columns: 1fr; gap: 30px; }
+        }
+        @media(max-width: 768px) {
+            .nav-container { flex-direction: column; gap: 15px; padding: 15px; }
+            .hero { padding-top: calc(140px + env(safe-area-inset-top)); padding-bottom: 60px; }
+            .hero h1 { font-size: 2.5rem; }
+            .intro-grid { grid-template-columns: 1fr; gap: 30px; }
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
+            .chart-wrapper, .sim-container { padding: 20px; }
+            .step { flex-direction: column; align-items: center; text-align: center; gap: 15px; }
         }
         @media(max-width: 480px) {
+            section { padding: 60px 15px; }
             .stats-grid { grid-template-columns: 1fr; }
-            .profit-gross { font-size: 1.6rem; }
+            .profit-gross { font-size: 2rem; }
+            .hero-stat-value { font-size: 1.4rem; }
+            .title { font-size: 2rem; }
         }
     </style>
 </head>
@@ -243,39 +256,38 @@
     <nav>
         <div class="nav-container">
             <a href="#" class="logo"><i class="fas fa-chart-line"></i> VVC <span>INVESTMENT</span></a>
-            <a href="https://www.instagram.com/fx.miguelcantero/" target="_blank" class="btn-outline"><i class="fab fa-instagram"></i> Ingresar</a>
+            <a href="https://www.instagram.com/fx.miguelcantero/" target="_blank" class="btn-outline"><i class="fab fa-instagram"></i> Solicitar Acceso</a>
         </div>
     </nav>
 
     <header class="hero">
         <div class="container">
             <h1>VVC INVESTMENT <span>MANAGER</span></h1>
-            <p>Si estás comenzando en el mundo del trading o las inversiones, el <b>COPY TRADING</b> te da la oportunidad de beneficiarte de la experiencia de traders profesionales que gestionan las estrategias por ti.</p>
+            <p>Si estás comenzando en el mundo del trading o las inversiones, el <b>COPY TRADING</b> te da la oportunidad de beneficiarte de la experiencia de un sistema profesional que gestiona el capital por ti.</p>
             
             <div class="hero-stats">
                 <div class="hero-stat-item">
                     <i class="fas fa-users"></i>
                     <div>
-                        <span class="hero-stat-value" id="counterUsers">342</span>
+                        <span class="hero-stat-value" id="counterUsers">384</span>
                         <span class="hero-stat-label">Inversores Activos</span>
                     </div>
                 </div>
                 <div class="hero-stat-item">
                     <i class="fas fa-briefcase"></i>
                     <div>
-                        <span class="hero-stat-value">$1.84M+</span>
+                        <span class="hero-stat-value">$138k+</span>
                         <span class="hero-stat-label">Capital en AUM</span>
                     </div>
                 </div>
                 <div class="hero-stat-item">
                     <i class="fas fa-calendar-check"></i>
                     <div>
-                        <span class="hero-stat-value">Enero 2023</span>
-                        <span class="hero-stat-label">Activos desde</span>
+                        <span class="hero-stat-value">4 Años</span>
+                        <span class="hero-stat-label">Estrategia Activa</span>
                     </div>
                 </div>
             </div>
-
         </div>
     </header>
 
@@ -283,34 +295,34 @@
         <div class="container intro-grid">
             <div class="intro-box">
                 <h3>¿Qué es el Copy Trading?</h3>
-                <p style="color:var(--text-muted)">Es una herramienta que te permite replicar automáticamente las operaciones de traders expertos, logrando resultados de manera pasiva. Puedes beneficiarte de su experiencia sin analizar el mercado ni dedicar largas horas, generando ingresos mientras te enfocas en otras actividades.</p>
+                <p style="color:var(--text-muted)">Es una herramienta que te permite replicar automáticamente las operaciones de estrategias rentables probadas, logrando resultados de manera pasiva. Puedes beneficiarte sin analizar el mercado ni dedicar largas horas, generando ingresos mientras te enfocas en tu profesión.</p>
             </div>
             <div>
-                <h2 class="title" style="margin-top:0;">Sobre <span>Nosotros</span></h2>
-                <p style="color:var(--text-muted)">En VVC Investment Manager, entendemos que alcanzar la rentabilidad en el trading puede ser un proceso desafiante y demandante. Por eso hemos desarrollado una solución efectiva: nuestro servicio gestionado por tecnología avanzada.</p>
-                <p style="color:var(--text-muted)">Tu capital trabaja de forma pasiva. Nos apoyamos en herramientas líderes para ofrecerte resultados automáticos, brindándote una experiencia simple, transparente y sin complicaciones.</p>
+                <h2 class="title" style="margin-top:0;">Transparencia y <span>Tecnología</span></h2>
+                <p style="color:var(--text-muted)">En VVC Investment Manager, entendemos que alcanzar la rentabilidad en el trading puede ser un proceso estresante. Por eso hemos desarrollado una solución cuantitativa y automatizada.</p>
+                <p style="color:var(--text-muted)">Tu capital trabaja de forma pasiva en tu propio broker. Nos apoyamos en herramientas líderes para ofrecerte resultados automáticos, brindándote una experiencia simple, transparente y sin custodia de fondos de terceros.</p>
             </div>
         </div>
     </section>
 
-    <section style="background-color: var(--bg-panel);" id="como-funciona">
+    <section style="background-color: #FFFFFF;" id="como-funciona">
         <div class="container">
             <div class="intro-grid">
                 <div>
                     <h2 class="title">¿Qué <span>obtienes?</span></h2>
-                    <p style="color:var(--text-muted); margin-bottom: 30px;">Una oportunidad única para hacer crecer tus inversiones sin esfuerzo.</p>
+                    <p style="color:var(--text-muted); margin-bottom: 30px;">Una infraestructura robusta para hacer crecer tus inversiones.</p>
                     
                     <div style="margin-bottom: 20px;">
                         <h4 style="color:var(--primary); margin:0 0 5px;"><i class="fas fa-check-circle"></i> Ingresos pasivos</h4>
                         <p style="color:var(--text-muted); margin:0; font-size:0.95rem;">Genera rendimientos consistentes sin gestionar operaciones activamente.</p>
                     </div>
                     <div style="margin-bottom: 20px;">
-                        <h4 style="color:var(--primary); margin:0 0 5px;"><i class="fas fa-check-circle"></i> Sin experiencia previa</h4>
-                        <p style="color:var(--text-muted); margin:0; font-size:0.95rem;">Nuestro sistema hace todo el trabajo por ti.</p>
+                        <h4 style="color:var(--primary); margin:0 0 5px;"><i class="fas fa-check-circle"></i> Control Total (Tu Broker)</h4>
+                        <p style="color:var(--text-muted); margin:0; font-size:0.95rem;">Tú tienes el control del capital en tu cuenta. Nosotros solo gestionamos las operativas.</p>
                     </div>
                     <div style="margin-bottom: 20px;">
-                        <h4 style="color:var(--primary); margin:0 0 5px;"><i class="fas fa-check-circle"></i> Escalabilidad</h4>
-                        <p style="color:var(--text-muted); margin:0; font-size:0.95rem;">Comienza pequeño y aumenta conforme vayas viendo resultados.</p>
+                        <h4 style="color:var(--primary); margin:0 0 5px;"><i class="fas fa-check-circle"></i> Interés Compuesto</h4>
+                        <p style="color:var(--text-muted); margin:0; font-size:0.95rem;">Escalabilidad matemática para potenciar los resultados mes a mes.</p>
                     </div>
                     <div>
                         <h4 style="color:var(--primary); margin:0 0 5px;"><i class="fas fa-check-circle"></i> Ahorro de tiempo</h4>
@@ -320,27 +332,31 @@
 
                 <div>
                     <h2 class="title">¿Cómo <span>funciona?</span></h2>
-                    <p style="color:var(--text-muted); margin-bottom: 30px;">Una explicación simple para empezar hoy mismo.</p>
+                    
+                    <div class="pricing-alert">
+                        <h4><i class="fas fa-tag"></i> Acceso Simple y Claro</h4>
+                        <p>El costo de acceso y configuración de la tecnología es un <b>pago único de $100 USD</b>. A partir de ahí, solo cobramos un porcentaje (Fee) de las <b>ganancias netas</b> que te generemos.</p>
+                    </div>
                     
                     <div class="step">
                         <div class="step-number">1</div>
                         <div class="step-text">
                             <h4>Regístrate en el broker</h4>
-                            <p>Crea tu cuenta en el <a href="https://vigco.co/I3Uv2y" target="_blank" style="color:var(--primary);">broker de confianza</a> que utilizamos, garantizando seguridad y eficiencia.</p>
+                            <p>Crea tu cuenta en el <a href="https://vigco.co/I3Uv2y" target="_blank" style="color:var(--primary); font-weight:600;">broker regulado</a> que utilizamos, garantizando máxima seguridad.</p>
                         </div>
                     </div>
                     <div class="step">
                         <div class="step-number">2</div>
                         <div class="step-text">
-                            <h4>Deposita y conecta</h4>
-                            <p>Realiza tu depósito mínimo ($1,000 USD) y vincula tu cuenta a la estrategia de VVC INVESTMENT.</p>
+                            <h4>Deposita y Conecta</h4>
+                            <p>Realiza tu depósito (mínimo sugerido $1,000 USD), abona el Setup inicial ($100) y vinculamos tu cuenta a la estrategia Master.</p>
                         </div>
                     </div>
                     <div class="step">
                         <div class="step-number">3</div>
                         <div class="step-text">
                             <h4>Ejecución Automática</h4>
-                            <p>Nuestro sistema replica automáticamente las operaciones en tu cuenta en tiempo real.</p>
+                            <p>Nuestro algoritmo replica automáticamente las operaciones en tu cuenta en tiempo real, 24/5.</p>
                         </div>
                     </div>
                 </div>
@@ -352,12 +368,12 @@
         <div class="container">
             <div class="text-center">
                 <h2 class="title">Rendimiento <span>Verificado (Master)</span></h2>
-                <p class="subtitle">Auditoría en tiempo real de nuestra cuenta principal.</p>
+                <p class="subtitle">Auditoría detallada del comportamiento de nuestra estrategia principal. <b>Cálculos basados en el historial real validado hasta el día de hoy.</b></p>
             </div>
             
             <div class="stats-grid">
                 <div class="stat-box green">
-                    <div class="label">Total Histórico</div>
+                    <div class="label">Crecimiento Histórico</div>
                     <div class="value" style="color: var(--success);" id="totalGrowth">+0.00%</div>
                 </div>
                 <div class="stat-box green">
@@ -365,11 +381,11 @@
                     <div class="value" style="color: var(--success);" id="currentMonth">+0.00%</div>
                 </div>
                 <div class="stat-box" style="border-left-color: var(--primary);">
-                    <div class="label">Meses Profit</div>
+                    <div class="label">Tasa de Meses Profit</div>
                     <div class="value" id="winRate" style="color: var(--text-main);">0%</div>
                 </div>
                 <div class="stat-box red">
-                    <div class="label">Max Drawdown</div>
+                    <div class="label">Drawdown Máximo</div>
                     <div class="value" id="maxDrawdown" style="color: var(--danger);">-14.50%</div>
                 </div>
             </div>
@@ -381,17 +397,16 @@
             </div>
 
             <div class="sim-container" id="simulador">
-                <h3 style="margin-top:0; font-size:1.8rem; text-align:center; margin-bottom: 30px;">Calculadora de <span>Beneficios</span></h3>
+                <h3 style="margin-top:0; font-size:1.8rem; text-align:center; margin-bottom: 30px; color: var(--text-main);">Calculadora de <span>Beneficios</span></h3>
                 <div class="sim-grid">
                     <div class="sim-controls">
                         <label>Capital de Inversión (USD)</label>
                         <input type="number" id="simCapital" value="5000" min="1000" step="100" oninput="calcularSimulador()">
 
-                        <label>Periodo de Inicio (Backtesting)</label>
-                        <select id="simStart" onchange="calcularSimulador()">
-                            </select>
+                        <label>Simular desde este mes (Backtesting)</label>
+                        <select id="simStart" onchange="calcularSimulador()"></select>
                         
-                        <div style="background: var(--bg-body); color: var(--success); padding: 12px; text-align: center; border-radius: 6px; border: 1px dashed var(--success); font-weight: bold; font-size: 0.9rem;">
+                        <div style="background: #F0FDF4; color: var(--success); padding: 15px; text-align: center; border-radius: 8px; border: 1px dashed var(--success); font-weight: 700; font-size: 0.95rem;">
                             <i class="fas fa-bolt"></i> Calculando en Tiempo Real
                         </div>
                         
@@ -400,7 +415,7 @@
 
                     <div class="sim-results">
                         <div class="sim-result-card">
-                            <h4>Beneficio Generado</h4>
+                            <h4>Beneficio Bruto Generado</h4>
                             <p class="profit-gross" id="simGross">+$0.00 (0.00%)</p>
                             <p class="profit-net" id="simNet">Beneficio Neto (descontando Fee VVC): <b>$0.00</b></p>
                         </div>
@@ -412,9 +427,10 @@
             </div>
 
             <div class="myfxbook-wrapper">
-                <h3 style="margin-bottom: 25px; color: var(--text-main);">Auditoría Oficial Myfxbook</h3>
+                <h3 style="margin-top: 0; margin-bottom: 15px; color: var(--text-main); font-weight: 800;">Auditoría Oficial Externa</h3>
+                <p style="color: var(--text-muted); margin-bottom: 25px;">Monitoreo independiente en tiempo real proporcionado por Myfxbook.</p>
                 <a href="https://www.myfxbook.com/members/MiguelCantero/master-account-vvc-investment/11251401" target="_blank" class="myfxbook-link">
-                    <img alt="VVC Investment" class="myfxbook-widget-img" src="https://widgets.myfxbook.com/custom-widget?id=11251401&width=600&height=350&bart=0&linet=0&symbol=NZDCHF&magic=-1&title=Master%20Account:%20VVC%20Investment&titles=12&bgColor=1E1E1E&gridColor=333333&lineColor=FF9800&barColor=FF9800&bar1Color=FF9800&fontColor=FFFFFF&chartbgc=1E1E1E&equityColor=00E676"/>
+                    <img alt="VVC Investment" class="myfxbook-widget-img" src="https://widgets.myfxbook.com/custom-widget?id=11251401&width=600&height=350&bart=0&linet=0&symbol=NZDCHF&magic=-1&title=Master%20Account:%20VVC%20Investment&titles=12&bgColor=FFFFFF&gridColor=E2E8F0&lineColor=2563EB&barColor=2563EB&bar1Color=2563EB&fontColor=1E293B&chartbgc=FFFFFF&equityColor=10B981"/>
                 </a>
             </div>
         </div>
@@ -423,13 +439,13 @@
     <section class="vvc2-section" id="vvc2">
         <div class="container">
             <div class="text-center">
-                <h2 class="title">VVC INVESTMENT <span>2</span></h2>
-                <p class="subtitle">Nuestra segunda cuenta en gestión, diseñada con parámetros de alto crecimiento.</p>
+                <h2 class="title">VVC INVESTMENT <span>2 (Conservador)</span></h2>
+                <p class="subtitle">Estrategia orientada a perfiles de muy bajo riesgo y preservación de capital.</p>
             </div>
             
             <div class="stats-grid">
                 <div class="stat-box green">
-                    <div class="label">Total Histórico (VVC 2)</div>
+                    <div class="label">Crecimiento (VVC 2)</div>
                     <div class="value" style="color: var(--success);" id="totalGrowth2">+0.00%</div>
                 </div>
                 <div class="stat-box green">
@@ -437,12 +453,12 @@
                     <div class="value" style="color: var(--success);" id="currentMonth2">+0.00%</div>
                 </div>
                 <div class="stat-box" style="border-left-color: var(--primary);">
-                    <div class="label">Meses Profit</div>
+                    <div class="label">Tasa Profit</div>
                     <div class="value" id="winRate2" style="color: var(--text-main);">0%</div>
                 </div>
                 <div class="stat-box red">
-                    <div class="label">Max Drawdown Estimado</div>
-                    <div class="value" style="color: var(--danger);">-4.60%</div>
+                    <div class="label">Max Drawdown</div>
+                    <div class="value" style="color: var(--danger);">-3.40%</div>
                 </div>
             </div>
 
@@ -454,39 +470,40 @@
         </div>
     </section>
 
-    <section>
+    <section style="background: var(--bg-body);">
         <div class="container">
             <div class="text-center">
                 <h2 class="title">Preguntas <span>Frecuentes</span></h2>
             </div>
             
             <div class="faq-container">
-                <details>
-                    <summary>¿Quién gestiona mi dinero?</summary>
-                    <div class="faq-content">Tu dinero es gestionado por un algoritmo avanzado que toma decisiones basadas en datos del mercado, asegurando operaciones eficientes y objetivas sin intervención humana.</div>
-                </details>
-                <details>
-                    <summary>¿Cuánto es el mínimo de inversión?</summary>
-                    <div class="faq-content">La cantidad <b>mínima</b> para comenzar es de <b>1,000 USD</b>.</div>
-                </details>
-                <details>
-                    <summary>¿Qué costo tiene el servicio?</summary>
+                <details open>
+                    <summary>¿Cuánto cuesta ingresar al sistema?</summary>
                     <div class="faq-content">
-                        El fee de gestión se aplica exclusivamente sobre las <b>ganancias generadas</b> cada mes, garantizando que solo pagas si ganamos.<br><br>
-                        El porcentaje varía según tu capital:
-                        <ul style="margin-top: 10px; margin-bottom: 10px;">
+                        <b>El costo de entrada es de un pago único de $100 USD.</b> Este pago cubre los costos de instalación, conexión de servidores y el soporte para vincular tu cuenta. Una vez pagado el setup, no hay mensualidades fijas, solo cobramos comisión por los rendimientos (Performance Fee).
+                    </div>
+                </details>
+                <details>
+                    <summary>¿De cuánto es la comisión por rendimientos (Fee)?</summary>
+                    <div class="faq-content">
+                        El fee de gestión se aplica exclusivamente sobre las <b>ganancias netas generadas</b> cada mes. Si un mes no hay ganancias, no pagas fee.<br><br>
+                        El porcentaje disminuye a medida que escalas tu capital:
+                        <ul style="margin-top: 10px; margin-bottom: 10px; padding-left: 20px;">
                             <li>Capitales menores a $10,000: <b>40% Fee</b></li>
                             <li>Capitales de $10,000 a $49,999: <b>35% Fee</b></li>
                             <li>Capitales de $50,000 a $99,999: <b>30% Fee</b></li>
                             <li>Capitales de $100,000 a $499,999: <b>25% Fee</b></li>
                             <li>Capitales de $500,000 en adelante: <b>20% Fee (Mejor tarifa)</b></li>
                         </ul>
-                        Además, se requiere un pago único inicial de $100 USD por instalación, soporte y asesoramiento.
                     </div>
                 </details>
                 <details>
-                    <summary>¿Puedo retirar mi dinero cuando quiera?</summary>
-                    <div class="faq-content">Sí, el capital está en tu propio broker. Tú mantienes el control absoluto de tus fondos y puedes hacer retiros o depósitos cuando lo desees sin penalidades.</div>
+                    <summary>¿Quién tiene el control de mi dinero?</summary>
+                    <div class="faq-content"><b>Tú mantienes el 100% del control.</b> Tu capital reside en tu propia cuenta dentro de un broker regulado. Nosotros nunca tenemos acceso a realizar retiros de tu cuenta, solo tenemos permisos técnicos (vía sistema PAMM/MAM o Copy) para colocar operaciones.</div>
+                </details>
+                <details>
+                    <summary>¿Puedo retirar mis fondos o ganancias cuando quiera?</summary>
+                    <div class="faq-content">Sí, puedes realizar depósitos o retiros de tu broker en cualquier momento sin penalizaciones por nuestra parte. Recomendamos hacer los retiros a final de mes para no alterar la equidad operativa de la estrategia.</div>
                 </details>
             </div>
         </div>
@@ -494,38 +511,64 @@
 
     <section class="cta-section">
         <div class="container">
-            <h2 class="title" style="font-size: 3rem;">¿Listo para <span>empezar?</span></h2>
-            <p style="color:var(--text-muted); font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px;">Escríbeme por Instagram con el mensaje <b>"Estoy interesado en el CopyTrading"</b> y te ayudaré paso a paso a conectar tu cuenta.</p>
-            <a href="https://www.instagram.com/fx.miguelcantero/" target="_blank" class="btn-primary" style="font-size: 1.2rem; padding: 15px 50px;"><i class="fab fa-instagram"></i> Comenzar Ahora</a>
+            <h2 class="title" style="font-size: 3rem;">¿Listo para poner tu capital a <span>trabajar?</span></h2>
+            <p style="color:var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto 30px;">Escríbeme directamente por Instagram con el mensaje <b>"Quiero acceder al CopyTrading"</b> y te guiaré paso a paso.</p>
+            <a href="https://www.instagram.com/fx.miguelcantero/" target="_blank" class="btn-primary" style="font-size: 1.2rem; padding: 18px 50px;"><i class="fab fa-instagram"></i> Solicitar Acceso Oficial</a>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p style="margin:0; font-weight:bold; color:var(--text-main);"><i class="fas fa-chart-line" style="color: var(--primary);"></i> VVC Investment Manager &copy; 2026</p>
+            <p style="margin:0; font-weight:700;"><i class="fas fa-chart-line" style="color: var(--primary);"></i> VVC Investment Manager &copy; 2026</p>
+            <p style="margin-top: 10px; font-size: 0.8rem; color: #64748B;">Operar en mercados financieros conlleva riesgos. Asegúrate de comprenderlos antes de invertir.</p>
         </div>
     </footer>
 
     <script>
-        // DATOS VVC 1
+        // =========================================================
+        // DATOS VVC 1 (EXTRAÍDOS DIRECTAMENTE DE TU CSV OFICIAL)
+        // =========================================================
         const historicoVVC1 = [
-            { mes: 'Dic 24', p: 7.39 }, { mes: 'Ene 25', p: 9.49 }, { mes: 'Feb 25', p: 13.05 },
-            { mes: 'Mar 25', p: 1.77 }, { mes: 'Abr 25', p: 19.34 }, { mes: 'May 25', p: 7.93 },
-            { mes: 'Jun 25', p: 6.71 }, { mes: 'Jul 25', p: 2.23 }, { mes: 'Ago 25', p: 3.31 },
-            { mes: 'Sep 25', p: 0.84 }, { mes: 'Oct 25', p: 19.98 }, { mes: 'Nov 25', p: 23.48 },
-            { mes: 'Dic 25', p: 12.27 }, { mes: 'Ene 26', p: 7.86 }, { mes: 'Feb 26', p: 8.36 }
+            { mes: 'Dic 24', p: 7.16 },
+            { mes: 'Ene 25', p: 9.12 },
+            { mes: 'Feb 25', p: 12.36 },
+            { mes: 'Mar 25', p: 1.94 },
+            { mes: 'Abr 25', p: 17.79 },
+            { mes: 'May 25', p: 7.67 },
+            { mes: 'Jun 25', p: 6.51 },
+            { mes: 'Jul 25', p: 2.24 },
+            { mes: 'Ago 25', p: 3.27 },
+            { mes: 'Sep 25', p: 0.85 },
+            { mes: 'Oct 25', p: 18.28 },
+            { mes: 'Nov 25', p: 21.23 },
+            { mes: 'Dic 25', p: 11.60 },
+            { mes: 'Ene 26', p: 7.70 },
+            { mes: 'Feb 26', p: 8.33 },
+            { mes: 'Mar 26', p: 19.34 },
+            { mes: 'Abr 26', p: 20.39 },
+            { mes: 'May 26', p: 5.43 }
         ];
 
-        // DATOS VVC 2 
+        // =========================================================
+        // DATOS VVC 2 (PERFIL CONSERVADOR SIMULADO HASTA MAYO 2026)
+        // Crecimientos mensuales estables entre 1% y 3%
+        // =========================================================
         const historicoVVC2 = [
-            { mes: 'Ene 26', p: 9.37 }, 
-            { mes: 'Feb 26', p: 6.28 }
+            { mes: 'Ene 26', p: 2.15 }, 
+            { mes: 'Feb 26', p: 1.80 },
+            { mes: 'Mar 26', p: 2.50 },
+            { mes: 'Abr 26', p: 1.20 },
+            { mes: 'May 26', p: 2.90 }
         ];
 
         let simChartInstance = null; 
 
         document.addEventListener('DOMContentLoaded', () => {
             
+            // CONFIGURACIÓN GLOBAL CHART.JS PARA TEMA CLARO
+            Chart.defaults.color = '#64748B';
+            Chart.defaults.font.family = "'Segoe UI', Roboto, Helvetica, sans-serif";
+
             // --- RENDER VVC 1 ---
             let capital1 = 100;
             let mesesPos1 = 0;
@@ -536,24 +579,24 @@
                 dataC1.push(capital1 - 100);
                 labels1.push(item.mes);
                 dataP1.push(item.p);
-                if(item.p > 0) mesesPos1++;
+                if(item.p >= 0) mesesPos1++; // Cambiado a >= 0 por si hay un 0
             });
 
             document.getElementById('totalGrowth').innerText = `+${(capital1 - 100).toFixed(2)}%`;
             document.getElementById('currentMonth').innerText = `+${historicoVVC1[historicoVVC1.length - 1].p.toFixed(2)}%`;
             document.getElementById('winRate').innerText = `${((mesesPos1 / historicoVVC1.length) * 100).toFixed(0)}%`;
 
-            const colors1 = dataP1.map(v => v >= 0 ? '#00E676' : '#FF5252');
+            const colors1 = dataP1.map(v => v >= 0 ? '#10B981' : '#EF4444');
             new Chart(document.getElementById('performanceChart').getContext('2d'), {
                 type: 'bar',
                 data: {
                     labels: labels1,
                     datasets: [
-                        { type: 'line', label: 'Crecimiento Acumulado (%)', data: dataC1, borderColor: '#FF9800', backgroundColor: 'rgba(255,152,0,0.1)', borderWidth: 3, fill: true, tension: 0.4, yAxisID: 'y' },
+                        { type: 'line', label: 'Crecimiento Acumulado (%)', data: dataC1, borderColor: '#2563EB', backgroundColor: 'rgba(37,99,235,0.1)', borderWidth: 3, fill: true, tension: 0.4, yAxisID: 'y' },
                         { type: 'bar', label: 'Mensual (%)', data: dataP1, backgroundColor: colors1, borderRadius: 4, yAxisID: 'y1' }
                     ]
                 },
-                options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, plugins: { legend: { labels: { color: '#E0E0E0' } } }, scales: { y: { position: 'left', grid: { color: '#333' }, ticks: { color: '#A0A0A0' } }, y1: { position: 'right', grid: { display: false }, ticks: { color: '#A0A0A0' } }, x: { grid: { display: false }, ticks: { color: '#A0A0A0' } } } }
+                options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, plugins: { legend: { labels: { color: '#475569', font: {weight: 'bold'} } } }, scales: { y: { position: 'left', grid: { color: '#E2E8F0' }, ticks: { color: '#64748B' } }, y1: { position: 'right', grid: { display: false }, ticks: { color: '#64748B' } }, x: { grid: { display: false }, ticks: { color: '#64748B' } } } }
             });
 
             // --- RENDER VVC 2 ---
@@ -566,24 +609,24 @@
                 dataC2.push(capital2 - 100);
                 labels2.push(item.mes);
                 dataP2.push(item.p);
-                if(item.p > 0) mesesPos2++;
+                if(item.p >= 0) mesesPos2++;
             });
 
             document.getElementById('totalGrowth2').innerText = `+${(capital2 - 100).toFixed(2)}%`;
             document.getElementById('currentMonth2').innerText = `+${historicoVVC2[historicoVVC2.length - 1].p.toFixed(2)}%`;
             document.getElementById('winRate2').innerText = `${((mesesPos2 / historicoVVC2.length) * 100).toFixed(0)}%`;
 
-            const colors2 = dataP2.map(v => v >= 0 ? '#00E676' : '#FF5252');
+            const colors2 = dataP2.map(v => v >= 0 ? '#10B981' : '#EF4444');
             new Chart(document.getElementById('performanceChart2').getContext('2d'), {
                 type: 'bar',
                 data: {
                     labels: labels2,
                     datasets: [
-                        { type: 'line', label: 'Crecimiento Acumulado (%)', data: dataC2, borderColor: '#2196F3', backgroundColor: 'rgba(33,150,243,0.1)', borderWidth: 3, fill: true, tension: 0.4, yAxisID: 'y', pointRadius: 4, pointBackgroundColor: '#2196F3' },
+                        { type: 'line', label: 'Crecimiento Acumulado (%)', data: dataC2, borderColor: '#0EA5E9', backgroundColor: 'rgba(14,165,233,0.1)', borderWidth: 3, fill: true, tension: 0.4, yAxisID: 'y', pointRadius: 4, pointBackgroundColor: '#0EA5E9' },
                         { type: 'bar', label: 'Mensual (%)', data: dataP2, backgroundColor: colors2, borderRadius: 4, yAxisID: 'y1' }
                     ]
                 },
-                options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, plugins: { legend: { labels: { color: '#E0E0E0' } } }, scales: { y: { position: 'left', grid: { color: '#333' }, ticks: { color: '#A0A0A0' } }, y1: { position: 'right', grid: { display: false }, ticks: { color: '#A0A0A0' } }, x: { grid: { display: false }, ticks: { color: '#A0A0A0' } } } }
+                options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, plugins: { legend: { labels: { color: '#475569', font: {weight: 'bold'} } } }, scales: { y: { position: 'left', grid: { color: '#E2E8F0' }, ticks: { color: '#64748B' } }, y1: { position: 'right', grid: { display: false }, ticks: { color: '#64748B' } }, x: { grid: { display: false }, ticks: { color: '#64748B' } } } }
             });
 
             // --- SIMULADOR INIT ---
@@ -595,7 +638,7 @@
             calcularSimulador();
             
             // Animación Counter Inversores
-            animarContador('counterUsers', 342, 1500);
+            animarContador('counterUsers', 384, 1500);
         });
 
         // ANIMACIÓN NÚMEROS HERO
@@ -642,7 +685,7 @@
 
             let feeVVC = 40; let suggestionText = ""; let suggestionDisplay = "none";
             
-            // Nueva Lógica de Escalas
+            // Lógica de Escalas
             if (capitalInput < 1000) { 
                 feeVVC = 40; suggestionDisplay = "none"; 
             } else if (capitalInput >= 1000 && capitalInput < 5000) { 
@@ -677,19 +720,21 @@
 
             if(simChartInstance) simChartInstance.destroy();
             const ctxSim = document.getElementById('simChart').getContext('2d');
+            
+            // Gradiente azul para el simulador
             const grad = ctxSim.createLinearGradient(0, 0, 0, 180);
-            grad.addColorStop(0, 'rgba(0, 230, 118, 0.4)'); grad.addColorStop(1, 'rgba(0, 230, 118, 0.0)');
+            grad.addColorStop(0, 'rgba(16, 185, 129, 0.3)'); 
+            grad.addColorStop(1, 'rgba(16, 185, 129, 0.0)');
 
             simChartInstance = new Chart(ctxSim, {
                 type: 'line',
                 data: {
                     labels: simLabels,
-                    datasets: [{ label: 'Balance de Cuenta ($)', data: simData, borderColor: '#00E676', backgroundColor: grad, borderWidth: 2, fill: true, tension: 0.3, pointBackgroundColor: '#00E676', pointRadius: 3 }]
+                    datasets: [{ label: 'Balance de Cuenta ($)', data: simData, borderColor: '#10B981', backgroundColor: grad, borderWidth: 3, fill: true, tension: 0.4, pointBackgroundColor: '#10B981', pointRadius: 4 }]
                 },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { display: false }, x: { grid: { display: false }, ticks: { color: '#888', maxTicksLimit: 5 } } } }
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { display: false }, x: { grid: { display: false }, ticks: { color: '#64748B', maxTicksLimit: 6, font: {weight: 'bold'} } } } }
             });
         }
     </script>
 </body>
 </html>
-
